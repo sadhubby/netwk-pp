@@ -1,8 +1,8 @@
 /*
 Group Members:
 De Guzman, Evan Mari 
-Dimaculangan, Renzel Aldwin
-Javier, Devon Jarek Yumping 
+Dimaculangan, Aldwin Renzel
+Javier, Devon Jarek 
  */
 
 
@@ -14,7 +14,7 @@ public class FileServer
 	
 	public static void main(String[] args)
 	{
-		int nPort = Integer.parseInt(args[0]);
+		int nPort = Integer.parseInt(args[0]); // 4000
 		System.out.println("Server: Listening on port " + args[0] + "...");
 		ServerSocket serverSocket;
 		Socket serverEndpoint;
@@ -32,14 +32,15 @@ public class FileServer
 			DataOutputStream dosWriter = new DataOutputStream(serverEndpoint.getOutputStream());
 			dosWriter.writeUTF("Server: Hello World!");
 
-  
-            File file = new File("C:/Users/Evan/Documents/netwk-pp/Download.txt");
-            FileInputStream fis = new FileInputStream(file);
+			
+            File file = new File("Download.txt"); // file object that is the Download.txt file put in the same folder
+            FileInputStream fis = new FileInputStream(file); // bytes of the content of Download.txt
             
-            byte[] buffer = new byte[(int) file.length()];
-          
-            dosWriter.writeInt(buffer.length);
-            dosWriter.write(buffer, 0, buffer.length);
+            byte[] buffer = new byte[(int) file.length()]; // array of bytes with size of length of content of Download.txt
+			fis.read(buffer); //reads the bytes of the array buffer
+
+            dosWriter.writeInt(buffer.length); // sending to client number of bytes
+            dosWriter.write(buffer, 0, buffer.length); // sends the byte array, the starting index and overall length of the byte array
 
             System.out.println("Server: Sending file: Download.txt");
 

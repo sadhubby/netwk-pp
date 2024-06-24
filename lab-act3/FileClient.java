@@ -1,8 +1,8 @@
 /*
 Group Members:
 De Guzman, Evan Mari 
-Dimaculangan, Renzel Aldwin
-Javier, Devon Jarek Yumping 
+Dimaculangan, Aldwin Renzel
+Javier, Devon Jarek  
  */
 
 
@@ -13,8 +13,8 @@ public class FileClient
 {
 	public static void main(String[] args)
 	{
-		String sServerAddress = args[0];
-		int nPort = Integer.parseInt(args[1]);
+		String sServerAddress = args[0]; //localhost
+		int nPort = Integer.parseInt(args[1]); //4000
 		
 		try
 		{
@@ -26,14 +26,15 @@ public class FileClient
 			dosWriter.writeUTF("Client: Hello from client" + clientEndpoint.getLocalSocketAddress());
 			
 			DataInputStream disReader = new DataInputStream(clientEndpoint.getInputStream());
-			System.out.println(disReader.readUTF());
+			System.out.println(disReader.readUTF()); //Hello World
 			
-            int length = disReader.readInt();
-            byte[] buffer = new byte[length];
-            disReader.readFully(buffer);
+			//
+            int length = disReader.readInt(); // length of hello world
+            byte[] buffer = new byte[length]; //makes Hello World! into bytes
+            disReader.readFully(buffer); // reads the bytes 
 
-            FileOutputStream fos = new FileOutputStream("C:/Users/Evan/Documents/netwk-pp/Received.txt");
-            fos.write(buffer);
+            FileOutputStream fos = new FileOutputStream("Received.txt"); //makes new Received.txt file 
+            fos.write(buffer); //writes the bytes in buffer to fos object which is the Received.txt file
             fos.close();    
 
             System.out.println("Client: Downloaded file Received.txt");
