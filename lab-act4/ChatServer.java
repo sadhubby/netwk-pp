@@ -8,26 +8,30 @@ public class ChatServer
 		int nPort = Integer.parseInt(args[0]);
 		
 		ServerSocket serverSocket;
-		Socket serverEndpoint;
-
+		Socket serverEndpoint;	
 		try 
 		{
-		
-			
-			while(true){
+				
 				serverSocket = new ServerSocket(nPort);
 				System.out.println("Server: Listening on port " + args[0] + "...");
-				serverEndpoint = serverSocket.accept();
-				System.out.println("Server: New client connected: " + serverEndpoint.getRemoteSocketAddress());
-				DataInputStream disReader = new DataInputStream(serverEndpoint.getInputStream());
-				System.out.println(disReader.readUTF());
-				System.out.println(disReader.readUTF());
-			}
-			
-
-
+				
 		//	DataOutputStream dosWriter = new DataOutputStream(serverEndpoint.getOutputStream());
 		//	dosWriter.writeUTF("Server: Hello World!");
+			
+			while(true){
+				serverEndpoint = serverSocket.accept();
+				serverEndpoint.setKeepAlive(true);
+
+				System.out.println("Server: New client connected: " + serverEndpoint.getRemoteSocketAddress());
+				DataInputStream disReader = new DataInputStream(serverEndpoint.getInputStream());
+				System.out.println(disReader.readUTF()); //1
+				System.out.println(disReader.readUTF()); //2
+				
+				// condition to check if name is the same or not, if not, send to this client. 
+
+
+			}
+
 
 		}
 		catch (Exception e)
