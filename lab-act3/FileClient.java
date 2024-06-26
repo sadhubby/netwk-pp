@@ -19,14 +19,12 @@ public class FileClient
 		try
 		{
 			Socket clientEndpoint = new Socket(sServerAddress, nPort);
-			
-			System.out.println("Client: Connected to server at" + clientEndpoint.getRemoteSocketAddress());
+			System.out.println("Client: Connecting to server at " + clientEndpoint.getRemoteSocketAddress() + "\n");
+			System.out.println("Client: Connected to server at " + clientEndpoint.getRemoteSocketAddress() + "\n");
 			
 			DataOutputStream dosWriter = new DataOutputStream(clientEndpoint.getOutputStream());
-			dosWriter.writeUTF("Client: Hello from client" + clientEndpoint.getLocalSocketAddress());
 			
 			DataInputStream disReader = new DataInputStream(clientEndpoint.getInputStream());
-			System.out.println(disReader.readUTF()); //Hello World
 			
 			//
             int length = disReader.readInt(); // length of hello world
@@ -37,7 +35,7 @@ public class FileClient
             fos.write(buffer); //writes the bytes in buffer to fos object which is the Received.txt file
             fos.close();    
 
-            System.out.println("Client: Downloaded file Received.txt");
+            System.out.println("Client: Downloaded file \"Received.txt\"\n");
 
 
 			clientEndpoint.close();

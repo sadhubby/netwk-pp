@@ -24,14 +24,12 @@ public class FileServer
 			serverSocket = new ServerSocket(nPort);
 			serverEndpoint = serverSocket.accept();
 			
-			System.out.println("Server: New client connected: " + serverEndpoint.getRemoteSocketAddress());
+			System.out.println("\nServer: New client connected: " + serverEndpoint.getRemoteSocketAddress());
 			
 			DataInputStream disReader = new DataInputStream(serverEndpoint.getInputStream());
-			System.out.println(disReader.readUTF());
-			
+		
 			DataOutputStream dosWriter = new DataOutputStream(serverEndpoint.getOutputStream());
-			dosWriter.writeUTF("Server: Hello World!");
-
+			
 			
             File file = new File("Download.txt"); // file object that is the Download.txt file put in the same folder
             FileInputStream fis = new FileInputStream(file); // bytes of the content of Download.txt
@@ -41,9 +39,7 @@ public class FileServer
 
             dosWriter.writeInt(buffer.length); // sending to client number of bytes
             dosWriter.write(buffer, 0, buffer.length); // sends the byte array, the starting index and overall length of the byte array
-
-            System.out.println("Server: Sending file: Download.txt");
-
+			System.out.println("\nServer: Sending File \"Download.txt\" (" + buffer.length +" bytes)\n");
             fis.close();
            
 			serverEndpoint.close();
