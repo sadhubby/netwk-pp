@@ -1,3 +1,10 @@
+/*
+Group Members:
+De Guzman, Evan Mari 
+Dimaculangan, Aldwin Renzel
+Javier, Devon Jarek  
+ */
+
 import java.net.*;
 import java.io.*;
 
@@ -5,10 +12,10 @@ public class ChatClient
 {
 	public static void main(String[] args)
 	{
-		String sServerAddress = args[0]; //localhost
-		int nPort = Integer.parseInt(args[1]); // 4000
-		String username = args[2]; // P1 = Alice, P2 = Bob
-		String message = args[3]; // message to Bob from Alice, message to Alice from Bob
+		String sServerAddress = args[0]; 
+		int nPort = Integer.parseInt(args[1]);
+		String username = args[2]; 
+		String message = args[3]; 
 		
 		try
 		{
@@ -19,8 +26,8 @@ public class ChatClient
 			DataOutputStream dosWriter = new DataOutputStream(clientEndpoint.getOutputStream());
 			
 			DataInputStream disReader = new DataInputStream(clientEndpoint.getInputStream());
-			dosWriter.writeUTF(username); //2 
-			dosWriter.writeUTF(message);//3
+			dosWriter.writeUTF(username); 
+			dosWriter.writeUTF(message);
 			
 			String fromUsername = disReader.readUTF();
 			String fromMessage = disReader.readUTF();

@@ -1,3 +1,10 @@
+/*
+Group Members:
+De Guzman, Evan Mari 
+Dimaculangan, Aldwin Renzel
+Javier, Devon Jarek  
+ */
+
 import java.net.*;
 import java.io.*;
 
