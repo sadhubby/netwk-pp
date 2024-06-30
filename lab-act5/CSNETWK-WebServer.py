@@ -20,6 +20,7 @@ while True:
         filename = message.split()[1] #reads the entire filename
         f = open(filename[1:]) #opens the filename
         outputdata = f.read()#Fill in start #Fill in end #reads the contents of the file, assigns to outputdata
+        f.close()
         #Send one HTTP header line into socket
         #Fill in start
         ok = "HTTP/1.1 200 OK\r\n\r\n" #assigning ok to have this string
@@ -37,7 +38,9 @@ while True:
         #Send response message for file not found
         #Fill in start
         notFound = "HTTP/1.1 404 Not Found\r\n\r\n" # same things as sa ok string
-        connectionSocket.send(notFound.encode()) 
+        connectionSocket.send(notFound.encode())
+        htmlNotFound = "<html><head></head><body> 404 Not Found </body></html>"
+        connectionSocket.send(htmlNotFound.encode()) 
         #Fill in end
         #Close client socket
         #Fill in start
