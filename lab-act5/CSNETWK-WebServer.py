@@ -39,7 +39,7 @@ while True:
         #Fill in start
         notFound = "HTTP/1.1 404 Not Found\r\n\r\n" # same things as sa ok string
         connectionSocket.send(notFound.encode())
-        htmlNotFound = "<html><head></head><body> 404 Not Found </body></html>"
+        htmlNotFound = "<html><head></head><body><h1>404 Not Found</h1></body></html>"
         connectionSocket.send(htmlNotFound.encode()) 
         #Fill in end
         #Close client socket
