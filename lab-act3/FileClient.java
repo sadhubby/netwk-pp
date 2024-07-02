@@ -13,8 +13,8 @@ public class FileClient
 {
 	public static void main(String[] args)
 	{
-		String sServerAddress = args[0]; //localhost
-		int nPort = Integer.parseInt(args[1]); //4000
+		String sServerAddress = args[0]; 
+		int nPort = Integer.parseInt(args[1]); 
 		
 		try
 		{
@@ -27,12 +27,12 @@ public class FileClient
 			DataInputStream disReader = new DataInputStream(clientEndpoint.getInputStream());
 			
 			//
-            int length = disReader.readInt(); // length of hello world
-            byte[] buffer = new byte[length]; //makes Hello World! into bytes
-            disReader.readFully(buffer); // reads the bytes 
+            int length = disReader.readInt(); 
+            byte[] buffer = new byte[length]; 
+            disReader.readFully(buffer); 
 
-            FileOutputStream fos = new FileOutputStream("Received.txt"); //makes new Received.txt file 
-            fos.write(buffer); //writes the bytes in buffer to fos object which is the Received.txt file
+            FileOutputStream fos = new FileOutputStream("Received.txt"); 
+            fos.write(buffer); 
             fos.close();    
 
             System.out.println("Client: Downloaded file \"Received.txt\"\n");

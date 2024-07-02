@@ -28,17 +28,20 @@ public class FileServer
 			
 			DataInputStream disReader = new DataInputStream(serverEndpoint.getInputStream());
 		
-			DataOutputStream dosWriter = new DataOutputStream(serverEndpoint.getOutputStream());
-			
-			
-            File file = new File("Download.txt"); // file object that is the Download.txt file put in the same folder
-            FileInputStream fis = new FileInputStream(file); // bytes of the content of Download.txt
-            
-            byte[] buffer = new byte[(int) file.length()]; // array of bytes with size of length of content of Download.txt
-			fis.read(buffer); //reads the bytes of the array buffer
+			DataOutputStream dosWriter = new DataOutputStream(serverEndpoint.getOutputStream());	
 
-            dosWriter.writeInt(buffer.length); // sending to client number of bytes
-            dosWriter.write(buffer, 0, buffer.length); // sends the byte array, the starting index and overall length of the byte array
+			FileWriter fileWriter = new FileWriter("Download.txt");
+			fileWriter.write("Hello World!");
+			fileWriter.close();
+
+            File file = new File("Download.txt"); 
+            FileInputStream fis = new FileInputStream(file); 
+            
+            byte[] buffer = new byte[(int) file.length()]; 
+			fis.read(buffer); 
+
+            dosWriter.writeInt(buffer.length); 
+            dosWriter.write(buffer, 0, buffer.length);
 			System.out.println("\nServer: Sending File \"Download.txt\" (" + buffer.length +" bytes)\n");
             fis.close();
            
