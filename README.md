@@ -25,4 +25,12 @@ To run a Client named "Alice" with the message "Hi!":
 To run a Client named "Bob" with the message "Hello!":
 `java ChatClient localhost 3000 "Bob" "Hello!"`
 
+## Lab Act 5
+Lab Act 5 is a Python web server programming application where a Server is to run and an html page and send the appropriate HTTP header, whether it is a 200 OK or a 404 Not Found.
+
+To run the Server:
+`py CSNETWK-WebServer.py`
+Opening a web browser, please type:
+`localhost:3000/CSNETWK.html` This should work and return an HTTP header of 200 OK. Any other server host or file to be opened should result in a 404 Not Found
+
 
