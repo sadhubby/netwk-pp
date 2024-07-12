@@ -10,13 +10,13 @@ To run the Server:
 
 To run the Client:
 `javac FileClient.java` then
-`java FileClient localhost 3000`
+`java FileClient 3000`
 
 ## Lab Act 4
 Lab Act 4 is a Command-Line Interface Java socket programming application where a Server allows the connection of more than one client and allows messages to be sent and received by two different clients.
 To run the Server:
 `javac ChatServer.java` then
-`java ChatServer localhost 3000`
+`java ChatServer 3000`
 
 To run a Client named "Alice" with the message "Hi!":
 `javac ChatClient.java` then
